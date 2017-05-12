@@ -1,8 +1,8 @@
 {
-  "name": "",
+  "name": "@pearson-components/loadingIndicator",
   "version": "0.0.0",
-  "description": "",
-  "author": "",
+  "description": "Loading indicator with overlay and chip for use when application is loading",
+  "author": "pearson-design-accelerator@pearson.com",
   "license": "MIT",
   "homepage": "https://pearson-higher-ed.github.io/component-archetype/",
   "main": "./build/dist.component-name.js",

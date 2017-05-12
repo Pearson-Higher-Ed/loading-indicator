@@ -1,16 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Demo Component</title>
+    <title>Demo Loading Indicator</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
     <!-- Customize the demo for your component -->
-    <h1>Component Archetype Demo</h1>
+    <h1>Loading Indicator Demo</h1>
     <p>Styled using the Elements SDK.</p>
     <br />
+    <p>Initialized and instantiated via ReactIntl components</p>
     <div id="app"></div>
+
+    <p>Initialized and instantiated via event (attached to body)</p>
+    <button onClick="loadBody()">Body Loading</button>
+    <div id="bodyAttach"></div>
+
+    <p>Initialized and instantiated via event (attached to DOM Element)</p>
+    <button onClick="loadDOM()">DOM Loading</button>
+    <div id="loaderAttach" style="border: 1px solid #000000; width: 600px; height: 600px;"></div>
 
     <!-- Icons -->
     <script>
@@ -36,5 +45,38 @@
     <!-- Demo build of component Injected on build -->
     <!-- Build Component to View Demo: npm run build && npm start -->
     <!-- View At: http://localhost:8081/component/ -->
+
+    <script>
+      function loadBody() {
+        document.body.dispatchEvent(new CustomEvent('o.initLoadingIndicator', {
+          detail: {
+            elementId: 'bodyAttach',
+            props: {
+              appLevel: true,
+              data: {
+                text: {
+                  chipText: 'loading...'
+                }
+              }
+            }
+          }
+        }));
+      }
+
+      function loadDOM() {
+        document.body.dispatchEvent(new CustomEvent('o.initLoadingIndicator', {
+          detail: {
+            elementId: 'loaderAttach',
+            props: {
+              data: {
+                text: {
+                  chipText: 'loading...'
+                }
+              }
+            }
+          }
+        }));
+      }
+    </script>
 </body>
 </html>

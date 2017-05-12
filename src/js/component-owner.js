@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import '../scss/component-specific.scss';
+//import { LoadingSpinner } from '@pearson-components/compounds';
 
 
 class ComponentOwner extends Component {
@@ -6,34 +9,29 @@ class ComponentOwner extends Component {
   constructor(props) {
 
     super(props);
-    //
-    // FOR DEMO - use state when you need to respond to user input, a server request or the passage of time
-    //
     this.state = {
-      text: ''
+      containerHeight: 0
     };
   }
 
-  //
-  // Note that combining the fat arrow syntax with ES7 class properties (transpiled by Babel Stage 0), we eliminate the
-  // need to do manual binding of the 'this' context in event handlers or callbacks. React binds all other contexts
-  // as expected.
-  //
-  // FOR DEMO and should be removed:
-  _change = () => {
-    this.setState({text: this.props.data.text.greeting});
-  };
+  componentDidMount() {
+    this.setState({containerHeight: ReactDOM.findDOMNode(this).parentNode.clientHeight});
+    console.log(this.state.containerHeight);
+  }
 
   render() {
-    const { data } = this.props;
-    //
-    // FOR DEMO and should be refactored for your purposes:
-    //
+    console.log('render invoked with ' + this.state.containerHeight);
+    const { appLevel, data } = this.props;
+    const overlayStyle = appLevel ? 'pe-loadingIndicator-overlay pe-loadingIndicator-overlay-app' : 'pe-loadingIndicator-overlay';
+
     return (
-      <div className="hi">
-        <button className="pe-btn__primary" onClick={this._change}>{data.text.buttonText}</button>
-        &nbsp;
-        <input type="text" placeholder={data.text.placeholder} value={this.state.text} />
+      <div className="pe-loadingIndicator">
+        <div className={overlayStyle} style={{height: this.state.containerHeight + 'px'}}>
+          <div className="pe-loadingIndicator-chip">
+            <div className="pe-loadingIndicator-spinner"></div>
+            <div className="pe-loadingIndicator-chip-text">{data.text.chipText}</div>
+          </div>
+        </div>
       </div>
     )
   }
