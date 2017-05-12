@@ -1,8 +1,6 @@
 @import '../../node_modules/pearson-elements/scss/elements/color/variables';
 
 .pe-loadingIndicator {
-  vertical-align: middle;
-  justify-content: center;
 
   .pe-loadingIndicator-overlay {
 
@@ -16,7 +14,7 @@
   }
 
   .pe-loadingIndicator-chip {
-
+    position: relative;
     background-color: $pe-color-charcoal;
     width: 200px;
     height: 70px;
