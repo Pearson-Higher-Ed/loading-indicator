@@ -11,32 +11,52 @@ class ComponentOwner extends Component {
     super(props);
     this.state = {
       containerHeight: 0,
-      chipVertPos: 0
+      chipVertPos: 0,
+      overlay: {
+        overlayOffset: 0,
+        overlayHeight: 0
+      }
     };
   }
 
   componentDidMount() {
+    console.log(ReactDOM.findDOMNode(this).parentNode);
     const chipHeight = 70;
-    const chipVertPos = Math.floor((ReactDOM.findDOMNode(this).parentNode.clientHeight - chipHeight) / 2);
+    const overlayOffset = ReactDOM.findDOMNode(this).parentNode.offsetHeight;
+    // const parentVert = Math.floor((parentHeight - chipHeight) / 2);
+    const windowVert = Math.floor((window.innerHeight - chipHeight) / 2);
+    // const chipVertPosDOM = (parentVert < 0) ? 0 : parentVert;
+    const chipVertPosWIN = (windowVert < 0) ? 0 : windowVert;
+    // const chipVertPosChildOffset = ReactDOM.findDOMNode(this).childNodes[0].clientHeight;
+    const chipVertPos = this.props.appLevel ? chipVertPosWIN : 0 - overlayHeight;
+    const overlayHeight = ReactDOM.findDOMNode(this).parentNode.clientHeight;
+
+    
+
     this.setState({
       containerHeight: ReactDOM.findDOMNode(this).parentNode.clientHeight,
-      chipVertPos: chipVertPos
+      chipVertPos: chipVertPos,
+      overlay: {
+        overlayOffset: overlayOffset,
+        overlayHeight: overlayHeight
+      }
     });
-    console.log(this.state.containerHeight + ' ' + this.state.chipVertPos);
   }
 
   render() {
-    console.log('render invoked with ' + this.state.containerHeight + ' and ' + this.state.chipVertPos);
-    const { appLevel, data } = this.props;
-    const overlayStyle = appLevel ? 'pe-loadingIndicator-overlay pe-loadingIndicator-overlay-app' : 'pe-loadingIndicator-overlay';
+    const { appLevel, children, data } = this.props;
+    const overlayStyle = appLevel ? 'pe-loadingIndicator-overlay-app' : 'pe-loadingIndicator-overlay';
 
     return (
       <div className="pe-loadingIndicator">
-        <div className={overlayStyle} style={{height: this.state.containerHeight + 'px'}}>
+        <div className={overlayStyle}>
           <div className="pe-loadingIndicator-chip" style={{top: this.state.chipVertPos}}>
             <div className="pe-loadingIndicator-spinner"></div>
             <div className="pe-loadingIndicator-chip-text">{data.text.chipText}</div>
           </div>
+        </div>
+        <div>
+          {children}
         </div>
       </div>
     )

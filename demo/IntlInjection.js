@@ -14,10 +14,15 @@ const IntlInjection = (props) => {
   }
 
   // add text to config data...
-  let data  = {};
-  data.text = intlText;
+  const data  = {
+    text: intlText
+  };
 
-  return <LoadingIndicator data={data} />
+  return (
+    <LoadingIndicator data={data}>
+      {props.children}
+    </LoadingIndicator>
+  )
 }
 
 

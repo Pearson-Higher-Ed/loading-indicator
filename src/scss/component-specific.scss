@@ -1,20 +1,36 @@
 @import '../../node_modules/pearson-elements/scss/elements/color/variables';
 
 .pe-loadingIndicator {
+  position: relative;
 
   .pe-loadingIndicator-overlay {
-
-    //to be removed
-    background-color: #FF0000;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 1000;
   }
 
   .pe-loadingIndicator-overlay-app {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
     //to be removed
     background-color: #0000FF;
+
+    //actual colors
+    //background-color: $pe-color-white;
+    //opacity: 0.15;
   }
 
   .pe-loadingIndicator-chip {
-    position: relative;
+    // position: relative;
     background-color: $pe-color-charcoal;
     width: 200px;
     height: 70px;
@@ -25,6 +41,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 1.0;
+    z-index: 1001;
 
     .pe-loadingIndicator-spinner {
       background-color: #FFFFFF;
