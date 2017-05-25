@@ -29,6 +29,10 @@
     //opacity: 0.15;
   }
 
+  .pe-loadingIndicator-overlay-inactive {
+    display: none;
+  }
+
   .pe-loadingIndicator-chip {
     // position: relative;
     background-color: $pe-color-charcoal;
@@ -44,17 +48,9 @@
     opacity: 1.0;
     z-index: 1001;
 
-    .pe-loadingIndicator-spinner {
-      background-color: #FFFFFF;
-      width: 25px;
-      height: 25px;
-      float: left;
-      margin-right: 6px;
-    }
-
     .pe-loadingIndicator-chip-text {
       color: $pe-color-white;
-      margin-left: 6px;
+      margin-left: 15px;
     }
   }
 }

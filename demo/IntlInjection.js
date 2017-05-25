@@ -19,7 +19,7 @@ const IntlInjection = (props) => {
   };
 
   return (
-    <LoadingIndicator data={data}>
+    <LoadingIndicator data={data} active="true">
       {props.children}
     </LoadingIndicator>
   )

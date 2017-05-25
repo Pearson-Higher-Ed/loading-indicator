@@ -86,5 +86,8 @@
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
   },
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "pearson-compounds": "^0.4.3"
+  }
 }
