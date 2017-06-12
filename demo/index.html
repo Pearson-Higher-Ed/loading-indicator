@@ -10,16 +10,18 @@
     <h1>Loading Indicator Demo</h1>
     <p>Styled using the Elements SDK.</p>
     <br />
-    <p>Initialized and instantiated via ReactIntl components</p>
+    <h2>Initialized and instantiated via ReactIntl components</h2>
+    <p><button onClick="toggleLoader('ex1')">Toggle loader</button>
     <div id="app"></div>
 
-    <p>Initialized and instantiated via event (attached to body)</p>
+    <h2>Initialized and instantiated via event (attached to body)</h2>
+    <p>Full page loading indicator will appear for 5 seconds and then switch off</p>
     <button onClick="loadBody()">Body Loading</button>
     <div id="bodyAttach"></div>
 
-    <p>Initialized and instantiated via event (attached to DOM Element)</p>
-    <button onClick="loadDOM()">DOM Loading</button>
-    <div id="loaderAttach" style="border: 1px solid #000000; width: 600px; height: 600px;">
+    <h2>Initialized and instantiated via event (attached to DOM Element)</h2>
+    <button onClick="loadDOM()" id="domLoader">DOM Loading</button> <button onClick="toggleLoader('ex3')">Toggle loader</button>
+    <div id="loaderAttach" style="width: 600px; height: 600px;">
       <p>Here is some text that should appear washed out when the loading indicator is displayed.</p>
       <p><a href="https://www.google.com">Here is a link to Google that you shouldn't be able to click on</a></p>
       <p><a href="https://www.google.com">Lorem</a> ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus mollis mattis. Donec posuere dictum tortor. Duis sodales ex in urna molestie feugiat. Nulla et odio molestie lacus placerat rutrum. Phasellus pretium molestie mauris a bibendum. Mauris risus nunc, mattis et sodales vel, auctor vel tellus. Nunc vehicula luctus mauris quis euismod. Mauris ut faucibus metus. Nunc at tortor mi. Sed semper lacus ac diam eleifend, quis malesuada nisi malesuada. Vivamus condimentum commodo quam, in porta libero placerat vel. Suspendisse at sollicitudin nulla. Nunc finibus velit odio, nec ultrices erat iaculis non.</p>
@@ -53,35 +55,63 @@
     <!-- View At: http://localhost:8081/component/ -->
 
     <script>
+      var bodyLoaderOn = false;
+      var loadedExamples = {
+        ex1: true,
+        ex2: false,
+        ex3: false
+      };
       function loadBody() {
-        document.body.dispatchEvent(new CustomEvent('o.initLoadingIndicator', {
-          detail: {
-            elementId: 'bodyAttach',
-            props: {
-              appLevel: true,
-              data: {
-                text: {
-                  chipText: 'loading...'
+        if (!loadedExamples.ex2) {
+          loadedExamples.ex2 = true;
+          document.body.dispatchEvent(new CustomEvent('o.initLoadingIndicator', {
+            detail: {
+              elementId: 'bodyAttach',
+              props: {
+                id: "ex2",
+                appLevel: true,
+                active: 'true',
+                data: {
+                  text: {
+                    chipText: 'loading...'
+                  }
                 }
               }
             }
-          }
-        }));
+          }));
+        }
+        else {
+          document.body.dispatchEvent(new CustomEvent('o.LoadingIndicatorToggle.ex2'));
+        }
+
+        setTimeout(() => {
+          document.body.dispatchEvent(new CustomEvent('o.LoadingIndicatorToggle.ex2'));
+        }, 5000);
       }
 
       function loadDOM() {
+        console.log('fire init event');
         document.body.dispatchEvent(new CustomEvent('o.initLoadingIndicator', {
           detail: {
             elementId: 'loaderAttach',
             props: {
+              id: "ex3",
+              active: 'true',
               data: {
                 text: {
-                  chipText: 'loading...'
+                  chipText: 'Copying...'
                 }
               }
             }
           }
         }));
+
+        document.getElementById('domLoader').disabled = true;
+        loadedExamples.ex3 = true;
+      }
+
+      function toggleLoader(loaderId) {
+        document.body.dispatchEvent(new CustomEvent('o.LoadingIndicatorToggle.' + loaderId));
       }
     </script>
 </body>

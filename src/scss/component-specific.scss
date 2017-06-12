@@ -13,6 +13,10 @@
     text-align: center;
     background: rgba(255, 255, 255, 0.85);
     z-index: 1000;
+
+    .pe-loadingIndicator-chip {
+      z-index: 1001;
+    }
   }
 
   .pe-loadingIndicator-overlay-app {
@@ -21,12 +25,12 @@
     top: 0;
     bottom: 0;
     right: 0;
-    //to be removed
-    background-color: #0000FF;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 10000;
 
-    //actual colors
-    //background-color: $pe-color-white;
-    //opacity: 0.15;
+    .pe-loadingIndicator-chip {
+      z-index: 10001;
+    }
   }
 
   .pe-loadingIndicator-overlay-inactive {
@@ -46,7 +50,6 @@
     align-items: center;
     justify-content: center;
     opacity: 1.0;
-    z-index: 1001;
 
     .pe-loadingIndicator-chip-text {
       color: $pe-color-white;

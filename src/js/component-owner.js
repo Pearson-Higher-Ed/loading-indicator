@@ -24,6 +24,20 @@ class ComponentOwner extends Component {
     };
 
     this.toggleLoader = _toggleLoader.bind(this);
+
+    document.body.addEventListener('o.LoadingIndicatorToggle.' + props.id, () => {
+      this.toggleLoader();
+    });
+  }
+
+  convertToJSX(htmlStr) {
+    const htmlObj = {
+      __html: htmlStr
+    };
+
+    return (
+      <div dangerouslySetInnerHTML={htmlObj} />
+    )
   }
 
   componentDidMount() {
@@ -43,21 +57,19 @@ class ComponentOwner extends Component {
     const { appLevel, children, data, htmlString } = this.props;
     const { active } = this.state;
     const overlayStyle = appLevel ? 'pe-loadingIndicator-overlay-app' : 'pe-loadingIndicator-overlay';
+    const chipStyle = appLevel ? {marginTop: this.state.chipVertPos} : {top: this.state.chipVertPos};
     const activeStyle = active === 'true' ? '' : ' pe-loadingIndicator-overlay-inactive';
-    const htmlJSX = (<div>{htmlString}</div>);
-    const childrenContent = children ? children : htmlJSX;
+    const childrenContent = children ? children : this.convertToJSX(htmlString);
 
     return (
       <div className="pe-loadingIndicator">
         <div className={overlayStyle + activeStyle}>
-          <div className="pe-loadingIndicator-chip" style={{top: this.state.chipVertPos}}>
+          <div className="pe-loadingIndicator-chip" style={chipStyle}>
             <LoadingSpinner />
             <div className="pe-loadingIndicator-chip-text">{data.text.chipText}</div>
           </div>
         </div>
-        <div>
-          {childrenContent}
-        </div>
+        {childrenContent}
       </div>
     )
   }

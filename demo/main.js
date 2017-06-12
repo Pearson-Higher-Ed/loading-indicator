@@ -12,9 +12,8 @@ document.body.addEventListener('o.initLoadingIndicator', e => {
     domElement = document.getElementById(e.detail.elementId);
     domContent = domElement.innerHTML;
   }
-  console.log(domElement);
 
-  e.detail.props.htmlString = domContent.innerHTML;
+  e.detail.props.htmlString = domContent;
 
   ReactDOM.render(
     React.createElement(LoadingIndicator, e.detail.props, null)
