@@ -34,9 +34,10 @@ class ComponentOwner extends Component {
     const htmlObj = {
       __html: htmlStr
     };
+    // const overlaidContent = this.state.active === 'true' ? 'false' : 'true';
 
     return (
-      <div dangerouslySetInnerHTML={htmlObj} />
+      <div dangerouslySetInnerHTML={htmlObj} aria-hidden={this.state.active}/>
     )
   }
 
@@ -59,10 +60,10 @@ class ComponentOwner extends Component {
     const overlayStyle = appLevel ? 'pe-loadingIndicator-overlay-app' : 'pe-loadingIndicator-overlay';
     const chipStyle = appLevel ? {marginTop: this.state.chipVertPos} : {top: this.state.chipVertPos};
     const activeStyle = active === 'true' ? '' : ' pe-loadingIndicator-overlay-inactive';
-    const childrenContent = children ? children : this.convertToJSX(htmlString);
+    const childrenContent = children ? (<div aria-hidden={this.state.active}>{children}</div>) : this.convertToJSX(htmlString);
 
     return (
-      <div className="pe-loadingIndicator">
+      <div className="pe-loadingIndicator" aria-live="assertive">
         <div className={overlayStyle + activeStyle}>
           <div className="pe-loadingIndicator-chip" style={chipStyle}>
             <LoadingSpinner />

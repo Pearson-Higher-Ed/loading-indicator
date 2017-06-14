@@ -90,7 +90,6 @@
       }
 
       function loadDOM() {
-        console.log('fire init event');
         document.body.dispatchEvent(new CustomEvent('o.initLoadingIndicator', {
           detail: {
             elementId: 'loaderAttach',
