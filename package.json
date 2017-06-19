@@ -88,6 +88,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "ally.js": "^1.4.1",
     "pearson-compounds": "^0.4.3"
   }
 }

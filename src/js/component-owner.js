@@ -1,13 +1,16 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import '../scss/component-specific.scss';
 import { LoadingSpinner } from 'pearson-compounds';
+import ally from 'ally.js';
 
 
 class ComponentOwner extends Component {
 
   static propTypes = {
     active: PropTypes.string,
+    id: PropTypes.string.isRequired,
     data: PropTypes.shape({
       text: PropTypes.shape({
         chipText: PropTypes.string.isRequired
@@ -24,6 +27,7 @@ class ComponentOwner extends Component {
     };
 
     this.toggleLoader = _toggleLoader.bind(this);
+    this.toggleTabbableItems = _toggleTabbableItems.bind(this);
 
     document.body.addEventListener('o.LoadingIndicatorToggle.' + props.id, () => {
       this.toggleLoader();
@@ -34,10 +38,9 @@ class ComponentOwner extends Component {
     const htmlObj = {
       __html: htmlStr
     };
-    // const overlaidContent = this.state.active === 'true' ? 'false' : 'true';
 
     return (
-      <div dangerouslySetInnerHTML={htmlObj} aria-hidden={this.state.active}/>
+      <div dangerouslySetInnerHTML={htmlObj} className={'loadingIndicatorContent-' + this.props.id} aria-hidden={this.state.active}/>
     )
   }
 
@@ -47,10 +50,20 @@ class ComponentOwner extends Component {
     const chipVertPosWIN = (windowVert < 0) ? 0 : windowVert;
     const overlayHeight = ReactDOM.findDOMNode(this).parentNode.clientHeight;
     const chipVertPos = this.props.appLevel ? chipVertPosWIN : 0 - overlayHeight;
+    const tabbableConfig = this.props.appLevel ? { context: 'body' } : { context: '.loadingIndicatorContent-' + this.props.id };
+    const tabElements = ally.query.tabbable(tabbableConfig);
 
+    console.log(tabElements);
+
+    if (this.state.active) {
+      for (let i = 0; i < tabElements.length; i++) {
+        tabElements[i].tabIndex = -1;
+      }
+    }
 
     this.setState({
-      chipVertPos: chipVertPos
+      chipVertPos: chipVertPos,
+      tabElements: tabElements
     });
   }
 
@@ -60,7 +73,7 @@ class ComponentOwner extends Component {
     const overlayStyle = appLevel ? 'pe-loadingIndicator-overlay-app' : 'pe-loadingIndicator-overlay';
     const chipStyle = appLevel ? {marginTop: this.state.chipVertPos} : {top: this.state.chipVertPos};
     const activeStyle = active === 'true' ? '' : ' pe-loadingIndicator-overlay-inactive';
-    const childrenContent = children ? (<div aria-hidden={this.state.active}>{children}</div>) : this.convertToJSX(htmlString);
+    const childrenContent = children ? (<div aria-hidden={this.state.active} className={'loadingIndicatorContent-' + this.props.id}>{children}</div>) : this.convertToJSX(htmlString);
 
     return (
       <div className="pe-loadingIndicator" aria-live="assertive">
@@ -82,5 +95,15 @@ export default ComponentOwner;
 
 export function _toggleLoader() {
   const newActive = this.state.active === 'true' ? 'false' : 'true';
-  this.setState({ active: newActive });
+  this.setState({ active: newActive,
+    tabElements: this.toggleTabbableItems(newActive)
+  });
+};
+
+export function _toggleTabbableItems(newActive) {
+  const tabElementArr = this.state.tabElements;
+  for (let i = 0; i < tabElementArr.length; i++) {
+    tabElementArr[i].tabIndex = newActive === 'false' ? 0 : -1;
+  }
+  return tabElementArr;
 };
