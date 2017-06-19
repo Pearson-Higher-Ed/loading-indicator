@@ -53,8 +53,6 @@ class ComponentOwner extends Component {
     const tabbableConfig = this.props.appLevel ? { context: 'body' } : { context: '.loadingIndicatorContent-' + this.props.id };
     const tabElements = ally.query.tabbable(tabbableConfig);
 
-    console.log(tabElements);
-
     if (this.state.active) {
       for (let i = 0; i < tabElements.length; i++) {
         tabElements[i].tabIndex = -1;
