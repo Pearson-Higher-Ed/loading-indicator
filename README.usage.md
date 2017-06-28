@@ -4,7 +4,7 @@ This project supports [Node v4+](https://nodejs.org) and npm 2+ installed in you
 
 Install and save in your package.json:
 
-    npm install @pearson-components/[component-name] --save
+    npm install @pearson-components/LoadingIndicator --save
 
 ## External Dependencies
 
@@ -37,18 +37,12 @@ The transpiled, minified bundle will be available in /node_modules/@pearson-comp
 This component can be consumed as an out of the box ReactJS component, or when used with an event listener, instantiated
 within a non-React application (though a React render call will be needed).
 
-Installing:
-
-```
-npm install --save @pearson-components/LoadingIndicator
-```
-
 Eventing example:
 
 ```js
 import ReactDOM from 'react-dom';
 import React    from 'react';
-import { LoadingIndicator } from 'LoadingIndicator';
+import { LoadingIndicator } from '@pearson-components/LoadingIndicator';
 
 document.body.addEventListener('o.initLoadingIndicator', e => {
 
@@ -90,7 +84,7 @@ call, the loading indicator will display in the area denoted by the elementId at
 ReactJS:
 
 ```js
-import { LoadingIndicator } from 'LoadingIndicator';
+import { LoadingIndicator } from '@pearson-components/LoadingIndicator';
 
 // in render method
 // add text to config data...
