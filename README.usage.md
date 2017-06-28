@@ -8,14 +8,14 @@ Install and save in your package.json:
 
 ## External Dependencies
 
-React and ReactDOM (v0.14 or v15) are external dependencies required to use this component. They are npm-installable or 
+React and ReactDOM (v0.14 or v15) are external dependencies required to use this component. They are npm-installable or
 available from a third-party [CDN](https://cdnjs.com/libraries/react/).
 
 This component targets the styling in the [Pearson Elements SDK](https://www.npmjs.com/package/pearson-elements).
 
 ## Cross-browser Compatibility
 
-The following [Polyfill.io](https://cdn.polyfill.io/v2/docs/examples) service is recommended for consuming this 
+The following [Polyfill.io](https://cdn.polyfill.io/v2/docs/examples) service is recommended for consuming this
 component cross-browser:
 
 ```html
@@ -31,8 +31,11 @@ If your browser already supports a feature, this service automatically optimizes
 
 See the /demo directory for example usage.
 
-The transpiled, minified bundle will be available in /node_modules/@pearson-components in the component 
+The transpiled, minified bundle will be available in /node_modules/@pearson-components in the component
 /build directory after you have npm installed this component in your project.
+
+This component can be consumed as an out of the box ReactJS component, or when used with an event listner, instantiated
+within a non-React application (though a React render call will be needed).
 
 Eventing example:
 
@@ -45,18 +48,17 @@ Direct API example:
 ```js
 [DIRECT API EXAMPLE GOES HERE]
 ```
-    
+
 ### Component Configuration
 
-    [CONFIG INFO GOES HERE]
+| **Option** | **Type (Default)** |**Description**|
+|----------|-------|---|
+| id | String | Required.  A string which will uniquely identify a loading indicator and create events according to this value |
+| active | String | Either "true" or "false".  If "true", the loading indicator will be active. |
+| data.text.chipText | String | The string that will appear in the loading indicator chip. |
 
 ### Eventing
 
-<table>
-    <tr>
-        <th>Event</th><th>detail</th>
-    </tr
-    <tr>
-        <td></td><td></td>
-    </tr>
-</table>
+| **Event** | **Detail**|
+|----------|-------|---|
+| o.LoadingIndicatorToggle.{id} | Event listener for a specific loading indicator instance which turns the loading indicator on and off. |
