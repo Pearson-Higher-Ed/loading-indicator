@@ -37,12 +37,18 @@ The transpiled, minified bundle will be available in /node_modules/@pearson-comp
 This component can be consumed as an out of the box ReactJS component, or when used with an event listener, instantiated
 within a non-React application (though a React render call will be needed).
 
+Installing:
+
+```
+npm install --save @pearson-components/LoadingIndicator
+```
+
 Eventing example:
 
 ```js
 import ReactDOM from 'react-dom';
 import React    from 'react';
-import { LoadingIndicator } from '../index';
+import { LoadingIndicator } from 'LoadingIndicator';
 
 document.body.addEventListener('o.initLoadingIndicator', e => {
 
@@ -81,10 +87,10 @@ For the eventing method, it is important to note that the HTML content to be ove
 passed into the component when it is rendered.  If the HTML content to be overlaid isn't passed in prior to the render method
 call, the loading indicator will display in the area denoted by the elementId attribute, but the content will disappear.
 
-ReadtJS:
+ReactJS:
 
 ```js
-import { LoadingIndicator } from '../index';
+import { LoadingIndicator } from 'LoadingIndicator';
 
 // in render method
 // add text to config data...
@@ -124,5 +130,5 @@ document.body.dispatchEvent(new CustomEvent('o.LoadingIndicatorToggle.ex1'));
 ### Eventing
 
 | **Event** | **Detail**|
-|----------|-------|---|
+|----------|-------|
 | o.LoadingIndicatorToggle.{id} | Event listener for a specific loading indicator instance which turns the loading indicator on and off. |
