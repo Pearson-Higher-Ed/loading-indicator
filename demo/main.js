@@ -3,7 +3,6 @@ import React    from 'react';
 
 import { LoadingIndicator } from '../index';
 
-
 document.body.addEventListener('o.initLoadingIndicator', e => {
 
   const domElement = document.getElementById(e.detail.elementId);

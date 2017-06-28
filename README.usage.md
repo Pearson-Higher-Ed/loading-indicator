@@ -34,19 +34,82 @@ See the /demo directory for example usage.
 The transpiled, minified bundle will be available in /node_modules/@pearson-components in the component
 /build directory after you have npm installed this component in your project.
 
-This component can be consumed as an out of the box ReactJS component, or when used with an event listner, instantiated
+This component can be consumed as an out of the box ReactJS component, or when used with an event listener, instantiated
 within a non-React application (though a React render call will be needed).
 
 Eventing example:
 
 ```js
-[EVENTING EXAMPLE GOES HERE]
+import ReactDOM from 'react-dom';
+import React    from 'react';
+import { LoadingIndicator } from '../index';
+
+document.body.addEventListener('o.initLoadingIndicator', e => {
+
+  const domElement = document.getElementById(e.detail.elementId);
+  const domContent = domElement.innerHTML;
+
+  e.detail.props.htmlString = domContent;
+
+  ReactDOM.render(
+    React.createElement(LoadingIndicator, e.detail.props, null)
+    , domElement
+  );
+});
+
+...
+
+const config = {
+  detail: {
+    elementId: 'domElementId',
+    props: {
+      id: "id1",
+      active: 'true',
+      data: {
+        text: {
+          chipText: 'Loading'
+        }
+      }
+    }
+  }
+};
+
+document.body.dispatchEvent(new CustomEvent('o.initLoadingIndicator', config));
 ```
 
-Direct API example:
+For the eventing method, it is important to note that the HTML content to be overlaid by the loading indicator needs to be
+passed into the component when it is rendered.  If the HTML content to be overlaid isn't passed in prior to the render method
+call, the loading indicator will display in the area denoted by the elementId attribute, but the content will disappear.
+
+ReadtJS:
 
 ```js
-[DIRECT API EXAMPLE GOES HERE]
+import { LoadingIndicator } from '../index';
+
+// in render method
+// add text to config data...
+const data  = {
+  text: {
+    chipText: 'Loading'
+  }
+};
+
+return (
+  <LoadingIndicator data={data} active="true" id="ex1">
+    {props.children}
+  </LoadingIndicator>
+)
+```
+In this instance, props.children contain the HTML content to be overlaid while the loader is active.
+
+### Toggling LoadingIndicator
+
+When the Loading Indicator is initialized, an event listener is created that will toggle the loading indicator
+on and off.  This example assumes that an id of 'ex1' was passed in as a property when the loading indicator was
+instantiated.  ReactJS apps can simply pass "true" or "false" into the active attribute or use the event listener.
+
+```js
+document.body.dispatchEvent(new CustomEvent('o.LoadingIndicatorToggle.ex1'));
 ```
 
 ### Component Configuration
@@ -56,6 +119,7 @@ Direct API example:
 | id | String | Required.  A string which will uniquely identify a loading indicator and create events according to this value |
 | active | String | Either "true" or "false".  If "true", the loading indicator will be active. |
 | data.text.chipText | String | The string that will appear in the loading indicator chip. |
+| htmlString | String (optional) | Used only when overlaid HTML content needs to be passed into the component as a property. |
 
 ### Eventing
 
