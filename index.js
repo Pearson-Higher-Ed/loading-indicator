@@ -1,1 +1,1 @@
-export ComponentOwner from './src/js/component-owner';
+export LoadingIndicator from './src/js/component-owner';
