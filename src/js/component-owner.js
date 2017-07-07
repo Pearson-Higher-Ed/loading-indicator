@@ -26,8 +26,8 @@ class ComponentOwner extends Component {
       chipVertPos: 0
     };
 
-    this.toggleLoader = _toggleLoader.bind(this);
-    this.toggleTabbableItems = _toggleTabbableItems.bind(this);
+    this.toggleLoader = this.toggleLoader.bind(this);
+    this.toggleTabbableItems = this.toggleTabbableItems.bind(this);
 
     document.body.addEventListener('o.LoadingIndicatorToggle.' + props.id, () => {
       this.toggleLoader();
@@ -42,6 +42,21 @@ class ComponentOwner extends Component {
     return (
       <div dangerouslySetInnerHTML={htmlObj} className={'loadingIndicatorContent-' + this.props.id} aria-hidden={this.state.active}/>
     )
+  }
+
+  toggleLoader() {
+    const newActive = this.state.active === 'true' ? 'false' : 'true';
+    this.setState({ active: newActive,
+      tabElements: this.toggleTabbableItems(newActive)
+    });
+  };
+
+  toggleTabbableItems(newActive) {
+    const tabElementArr = this.state.tabElements;
+    for (let i = 0; i < tabElementArr.length; i++) {
+      tabElementArr[i].tabIndex = newActive === 'false' ? 0 : -1;
+    }
+    return tabElementArr;
   }
 
   componentDidMount() {
@@ -74,14 +89,16 @@ class ComponentOwner extends Component {
     const childrenContent = children ? (<div aria-hidden={this.state.active} className={'loadingIndicatorContent-' + this.props.id}>{children}</div>) : this.convertToJSX(htmlString);
 
     return (
-      <div className="pe-loadingIndicator" aria-live="assertive">
+      <div className="pe-loadingIndicator">
         <div className={overlayStyle + activeStyle}>
           <div className="pe-loadingIndicator-chip" style={chipStyle}>
             <LoadingSpinner />
             <div className="pe-loadingIndicator-chip-text">{data.text.chipText}</div>
           </div>
         </div>
-        {childrenContent}
+        <div aria-live="polite" aria-busy={active}>
+          {childrenContent}
+        </div>
       </div>
     )
   }
@@ -90,18 +107,3 @@ class ComponentOwner extends Component {
 
 
 export default ComponentOwner;
-
-export function _toggleLoader() {
-  const newActive = this.state.active === 'true' ? 'false' : 'true';
-  this.setState({ active: newActive,
-    tabElements: this.toggleTabbableItems(newActive)
-  });
-};
-
-export function _toggleTabbableItems(newActive) {
-  const tabElementArr = this.state.tabElements;
-  for (let i = 0; i < tabElementArr.length; i++) {
-    tabElementArr[i].tabIndex = newActive === 'false' ? 0 : -1;
-  }
-  return tabElementArr;
-};

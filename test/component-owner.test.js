@@ -34,7 +34,7 @@ describe('Loading Indicator Suite (loader on portion of screen)', function() {
   });
 
   it('renders the overlaid content', function () {
-    const testStr = this.wrapper.nodes[0].props.children[1].props.children.type;
+    const testStr = this.wrapper.nodes[0].props.children[1].props.children.props.children.type;
     expect(testStr).toEqual('p');
   });
 
@@ -66,7 +66,7 @@ describe('Loading Indicator Suite (full screen loader)', function() {
   });
 
   it('renders the overlaid content', function () {
-    const testStr = this.wrapper.nodes[0].props.children[1].props.children.type;
+    const testStr = this.wrapper.nodes[0].props.children[1].props.children.props.children.type;
     expect(testStr).toEqual('p');
   });
 
@@ -101,7 +101,7 @@ describe('Loading Indicator Suite (loader off to start, children as props)', fun
   });
 
   it('renders the overlaid content', function () {
-    const testStr = this.wrapper.nodes[0].props.children[1].props.dangerouslySetInnerHTML.__html;
+    const testStr = this.wrapper.nodes[0].props.children[1].props.children.props.dangerouslySetInnerHTML.__html;
     expect(testStr).toEqual('<p>Children Content</p>');
   });
 

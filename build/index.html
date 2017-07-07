@@ -11,16 +11,16 @@
     <p>Styled using the Elements SDK.</p>
     <br />
     <h2>Initialized and instantiated via ReactIntl components</h2>
-    <p><button onClick="toggleLoader('ex1')">Toggle loader</button>
+    <p><button onClick="toggleLoader('ex1')" type="button">Toggle loader</button>
     <div id="app"></div>
 
     <h2>Initialized and instantiated via event (attached to body)</h2>
     <p>Full page loading indicator will appear for 5 seconds and then switch off</p>
-    <button onClick="loadBody()">Body Loading</button>
+    <button onClick="loadBody()" type="button">Body Loading</button>
     <div id="bodyAttach"></div>
 
     <h2>Initialized and instantiated via event (attached to DOM Element)</h2>
-    <button onClick="loadDOM()" id="domLoader">DOM Loading</button> <button onClick="toggleLoader('ex3')">Toggle loader</button>
+    <button onClick="loadDOM()" id="domLoader" type="button">DOM Loading</button> <button onClick="toggleLoader('ex3')" type="button">Toggle loader</button>
     <div id="loaderAttach" style="width: 600px; height: 600px;">
       <p>Here is some text that should appear washed out when the loading indicator is displayed.</p>
       <p><a href="https://www.google.com">Here is a link to Google that you shouldn't be able to click on</a></p>
