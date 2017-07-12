@@ -87,13 +87,14 @@ class ComponentOwner extends Component {
     const chipStyle = appLevel ? {marginTop: this.state.chipVertPos} : {top: this.state.chipVertPos};
     const activeStyle = active === 'true' ? '' : ' pe-loadingIndicator-overlay-inactive';
     const childrenContent = children ? (<div aria-hidden={this.state.active} className={'loadingIndicatorContent-' + this.props.id}>{children}</div>) : this.convertToJSX(htmlString);
+    const chipTextWidth = data.text.chipText.length > 20 ? {width: 140} : {};
 
     return (
       <div className="pe-loadingIndicator">
         <div className={overlayStyle + activeStyle}>
           <div className="pe-loadingIndicator-chip" style={chipStyle}>
             <LoadingSpinner />
-            <div className="pe-loadingIndicator-chip-text">{data.text.chipText}</div>
+            <div className="pe-loadingIndicator-chip-text" style={chipTextWidth}>{data.text.chipText}</div>
           </div>
         </div>
         <div aria-live="polite" aria-busy={active}>
