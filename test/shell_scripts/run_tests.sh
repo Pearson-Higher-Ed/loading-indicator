@@ -5,7 +5,7 @@ echo "Trigger the Selenium tests for rebrand branch: ux-test-platform repo...."
 #Step 1: API to trigger the ux-test-platform build with the below config
 body="{
 \"request\": {
-\"message\": \"feat(loadingIndicator): Run Loading Indicator Tests\",
+\"message\": \"feat(loadingIndicator): Run Loading Indicator Tests for $TRAVIS_BRANCH \",
 \"branch\":\"rebrand\",
 \"config\": {
 \"script\": [
