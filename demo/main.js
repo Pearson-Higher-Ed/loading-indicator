@@ -1,12 +1,17 @@
 import ReactDOM from 'react-dom';
 import React    from 'react';
 
-import { default as Component } from '../index';
+import { LoadingIndicator } from '../index';
 
+document.body.addEventListener('o.initLoadingIndicator', e => {
 
-document.body.addEventListener('o.InitComponent', e => {
+  const domElement = document.getElementById(e.detail.elementId);
+  const domContent = domElement.innerHTML;
+
+  e.detail.props.htmlString = domContent;
+
   ReactDOM.render(
-    React.createElement(Component, e.detail.props, e.detail.props.children)
-    , document.getElementById(e.detail.elementId)
+    React.createElement(LoadingIndicator, e.detail.props, null)
+    , domElement
   );
 });

@@ -1,25 +1,28 @@
 import React              from 'react';
 import { injectIntl }     from 'react-intl';
 import { messages }       from './translations/defaultMessages';
-import { ComponentOwner } from '../index';
+import { LoadingIndicator } from '../index';
 
 
 const IntlInjection = (props) => {
 
-      const { intl } = props;
+  const { intl } = props;
 
-      // do the string replacement...
-      const intlText = {
-        buttonText  : intl.formatMessage(messages.buttonText),
-        placeholder : intl.formatMessage(messages.placeholder),
-        greeting    : intl.formatMessage(messages.greeting)
-      }
+  // do the string replacement...
+  const intlText = {
+    chipText  : intl.formatMessage(messages.chipText)
+  }
 
-      // add text to config data...
-      let data  = {};
-      data.text = intlText;
+  // add text to config data...
+  const data  = {
+    text: intlText
+  };
 
-      return <ComponentOwner data={data} />
+  return (
+    <LoadingIndicator data={data} active="true" id="ex1">
+      {props.children}
+    </LoadingIndicator>
+  )
 }
 
 
