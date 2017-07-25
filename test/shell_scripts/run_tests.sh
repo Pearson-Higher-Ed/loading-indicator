@@ -13,7 +13,7 @@ body="{
 \"export feature_branch=$TRAVIS_BRANCH\",
 \"chmod 777 ./src/main/shell_scripts/components.sh\",
 \"./src/main/shell_scripts/components.sh\",
-\"mvn -Dtest_suite_xml=loadingIndicator.xml test\"
+\"mvn -Dtest_suite_xml=loading_indicator.xml test\"
 ]
 }
 }}"
