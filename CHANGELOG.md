@@ -1,5 +1,10 @@
+<a name="0.0.2"></a>
+## [0.0.2](https://github.com/Pearson-Higher-Ed/loadingIndicator/compare/v0.0.1...v0.0.2) (2017-07-25)
+
+
+
 <a name="0.0.1"></a>
-## 0.0.1 (2017-07-25)
+## [0.0.1](https://github.com/Pearson-Higher-Ed/loadingIndicator/compare/896ea18...v0.0.1) (2017-07-25)
 
 
 ### Bug Fixes
