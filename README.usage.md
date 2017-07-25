@@ -42,7 +42,7 @@ Eventing example:
 ```js
 import ReactDOM from 'react-dom';
 import React    from 'react';
-import { LoadingIndicator } from '@pearson-components/LoadingIndicator';
+import { LoadingIndicator } from '@pearson-components/loading-indicator';
 
 document.body.addEventListener('o.initLoadingIndicator', e => {
 
@@ -84,7 +84,7 @@ call, the loading indicator will display in the area denoted by the elementId at
 ReactJS:
 
 ```js
-import { LoadingIndicator } from '@pearson-components/LoadingIndicator';
+import { LoadingIndicator } from '@pearson-components/loading-indicator';
 
 // in render method
 // add text to config data...

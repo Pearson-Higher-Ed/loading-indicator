@@ -43,7 +43,7 @@ The component demo can be deployed to github pages by:
 
 The page can then be viewed at:
 
-  [http://pearson-higher-ed.github.io/component-archetype](http://pearson-higher-ed.github.io/component-archetype)
+  [http://pearson-higher-ed.github.io/loading-indicator](http://pearson-higher-ed.github.io/loading-indicator)
 
 
 ### BitBucket
@@ -70,7 +70,7 @@ In your local repo:
     npm install
     npm start
 
-Navigate to: **localhost:8081/component-archetype/**
+Navigate to: **localhost:8081/loading-indicator/**
 
 #### Where are the files being served from?
 
