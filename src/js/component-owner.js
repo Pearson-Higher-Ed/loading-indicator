@@ -80,6 +80,12 @@ class ComponentOwner extends Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.active !== this.state.active) {
+      this.setState({ active: nextProps.active });
+    }
+  }
+
   render() {
     const { appLevel, children, data, htmlString } = this.props;
     const { active } = this.state;
