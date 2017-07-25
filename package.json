@@ -4,7 +4,7 @@
   "description": "Loading indicator with overlay and chip for use when application is loading",
   "author": "pearson-design-accelerator@pearson.com",
   "license": "MIT",
-  "homepage": "https://pearson-higher-ed.github.io/component-archetype/",
+  "homepage": "https://pearson-higher-ed.github.io/loadingIndicator/",
   "main": "./build/dist.loadingIndicator.js",
   "scripts": {
     "start": "npm run serve",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pearson-Higher-Ed/component-archetype/"
+    "url": "https://github.com/Pearson-Higher-Ed/loadingIndicator/"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -46,7 +46,6 @@
     "verbose": true
   },
   "devDependencies": {
-    "@pearson-components/npm-scripts": "^0.3.12",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^18.0.0",
@@ -93,6 +92,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "@pearson-components/npm-scripts": "^0.5.1",
     "ally.js": "^1.4.1",
     "pearson-compounds": "^0.4.7"
   }
