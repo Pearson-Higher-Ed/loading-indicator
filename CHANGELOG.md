@@ -1,3 +1,8 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/Pearson-Higher-Ed/loadingIndicator/compare/v0.0.5...v1.0.0) (2017-07-25)
+
+
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/Pearson-Higher-Ed/loadingIndicator/compare/v0.0.4...v0.0.5) (2017-07-25)
 
