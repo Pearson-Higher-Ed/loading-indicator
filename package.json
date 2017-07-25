@@ -1,5 +1,5 @@
 {
-  "name": "@pearson-components/loadingIndicator",
+  "name": "@pearson-components/loading-indicator",
   "version": "0.0.2",
   "description": "Loading indicator with overlay and chip for use when application is loading",
   "author": "pearson-design-accelerator@pearson.com",
