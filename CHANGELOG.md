@@ -1,5 +1,15 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/Pearson-Higher-Ed/loading-indicator/compare/v1.0.2...v1.0.3) (2017-07-26)
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/Pearson-Higher-Ed/loading-indicator/compare/v1.0.1...v1.0.2) (2017-07-25)
+
+
+### Bug Fixes
+
+* add componentWillReceiveProps method to allow prop change to active to trigger rerender via state change ([80a6154](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/80a6154))
 
 
 
