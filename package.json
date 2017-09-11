@@ -3,7 +3,7 @@
   "version": "1.0.5",
   "description": "Loading indicator with overlay and chip for use when application is loading",
   "author": "pearson-design-accelerator@pearson.com",
-  "license": "MIT",
+  "license": "PEARSON PROPRIETARY AND CONFIDENTIAL INFORMATION SUBJECT TO NDA",
   "homepage": "https://pearson-higher-ed.github.io/loading-indicator/",
   "main": "./build/dist.loadingIndicator.js",
   "scripts": {
