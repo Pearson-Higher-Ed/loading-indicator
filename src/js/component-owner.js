@@ -28,10 +28,6 @@ class ComponentOwner extends Component {
 
     this.toggleLoader = this.toggleLoader.bind(this);
     this.toggleTabbableItems = this.toggleTabbableItems.bind(this);
-
-    document.body.addEventListener('o.LoadingIndicatorToggle.' + props.id, () => {
-      this.toggleLoader();
-    });
   }
 
   convertToJSX(htmlStr) {
@@ -40,13 +36,18 @@ class ComponentOwner extends Component {
     };
 
     return (
-      <div dangerouslySetInnerHTML={htmlObj} className={'loadingIndicatorContent-' + this.props.id} aria-hidden={this.state.active}/>
-    )
+      <div
+        dangerouslySetInnerHTML={htmlObj}
+        className={`loadingIndicatorContent-${this.props.id}`}
+        aria-hidden={this.state.active}
+      />
+    );
   }
 
   toggleLoader() {
     const newActive = this.state.active === 'true' ? 'false' : 'true';
-    this.setState({ active: newActive,
+    this.setState({
+      active: newActive,
       tabElements: this.toggleTabbableItems(newActive)
     });
   };
@@ -65,7 +66,7 @@ class ComponentOwner extends Component {
     const chipVertPosWIN = (windowVert < 0) ? 0 : windowVert;
     const overlayHeight = ReactDOM.findDOMNode(this).parentNode.clientHeight;
     const chipVertPos = this.props.appLevel ? chipVertPosWIN : 0 - overlayHeight;
-    const tabbableConfig = this.props.appLevel ? { context: 'body' } : { context: '.loadingIndicatorContent-' + this.props.id };
+    const tabbableConfig = this.props.appLevel ? { context: 'body' } : { context: `.loadingIndicatorContent-${this.props.id}` };
     const tabElements = ally.query.tabbable(tabbableConfig);
 
     if (this.state.active) {
@@ -74,9 +75,13 @@ class ComponentOwner extends Component {
       }
     }
 
+    document.body.addEventListener(`o.LoadingIndicatorToggle.${this.props.id}`, () => {
+      this.toggleLoader();
+    });
+
     this.setState({
-      chipVertPos: chipVertPos,
-      tabElements: tabElements
+      chipVertPos,
+      tabElements
     });
   }
 
@@ -87,12 +92,12 @@ class ComponentOwner extends Component {
   }
 
   render() {
-    const { appLevel, children, data, htmlString } = this.props;
-    const { active } = this.state;
+    const { appLevel, children, data, htmlString, id } = this.props;
+    const { active, chipVertPos } = this.state;
     const overlayStyle = appLevel ? 'pe-loadingIndicator-overlay-app' : 'pe-loadingIndicator-overlay';
-    const chipStyle = appLevel ? {marginTop: this.state.chipVertPos} : {top: this.state.chipVertPos};
+    const chipStyle = appLevel ? {marginTop: chipVertPos} : {top: chipVertPos};
     const activeStyle = active === 'true' ? '' : ' pe-loadingIndicator-overlay-inactive';
-    const childrenContent = children ? (<div aria-hidden={this.state.active} className={'loadingIndicatorContent-' + this.props.id}>{children}</div>) : this.convertToJSX(htmlString);
+    const childrenContent = children ? (<div aria-hidden={active} className={`loadingIndicatorContent-${id}`}>{children}</div>) : this.convertToJSX(htmlString);
     const chipTextWidth = data.text.chipText.length > 20 ? {width: 140} : {};
 
     return (
