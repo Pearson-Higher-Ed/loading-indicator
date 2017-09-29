@@ -1,3 +1,8 @@
+<a name="1.0.7"></a>
+## [1.0.7](https://github.com/Pearson-Higher-Ed/loading-indicator/compare/v1.0.6...v1.0.7) (2017-09-29)
+
+
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/Pearson-Higher-Ed/loading-indicator/compare/v1.0.5...v1.0.6) (2017-09-11)
 
@@ -94,7 +99,7 @@
 * update npm-scripts version ([adc0cbf](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/adc0cbf))
 * update the html with proptypes script ([a97decd](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/a97decd))
 * upgrade webpack ([5098442](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/5098442))
-* Use verify npm script to ensure package name has [@pearson](https://github.com/pearson)-components scope. ([772586f](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/772586f))
+* Use verify npm script to ensure package name has [@pearson-components](https://github.com/pearson-components) scope. ([772586f](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/772586f))
 
 
 ### Features
