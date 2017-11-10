@@ -6,7 +6,7 @@ import { LoadingSpinner } from 'pearson-compounds';
 import ally from 'ally.js';
 
 
-class ComponentOwner extends Component {
+export default class ComponentOwner extends Component {
 
   static propTypes = {
     active: PropTypes.string,
@@ -116,6 +116,3 @@ class ComponentOwner extends Component {
   }
 
 }
-
-
-export default ComponentOwner;
