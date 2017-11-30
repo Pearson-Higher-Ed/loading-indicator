@@ -22,14 +22,14 @@ module.exports = {
   output: {
     path          : path.resolve(__dirname, 'build'),
     filename      : '[name].loadingIndicator.js',
-    publicPath    : '/loadingIndicator/',
+    publicPath    : '/loading-indicator/',
     libraryTarget : 'umd'
   },
   devtool: 'source-map',
   devServer: {
     host               : '0.0.0.0',
     port               : 8081,
-    publicPath         : '/loadingIndicator/',
+    publicPath         : '/loading-indicator/',
     hot                : true,
     https              : false,
     overlay            : true,
