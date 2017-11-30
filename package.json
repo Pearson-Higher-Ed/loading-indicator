@@ -92,7 +92,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "@pearson-components/npm-scripts": "^0.5.1",
+    "@pearson-components/npm-scripts": "^0.5.6",
     "ally.js": "^1.4.1",
     "pearson-compounds": "^0.4.7"
   }
