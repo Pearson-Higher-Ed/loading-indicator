@@ -33,7 +33,7 @@
     <script>
       if (document.body.children[0].nodeName != 'svg') {
         var pe_ajax = new XMLHttpRequest();
-        pe_ajax.open("GET", "/images/p-icons-sprite-1.1.svg", true);
+        pe_ajax.open("GET", "https://unpkg.com/pearson-elements@1.14.9/dist/icons/p-icons-sprite-1.1.svg", true);
         pe_ajax.responseType = "document";
         pe_ajax.onload = function(e) {
           document.body.insertBefore(
@@ -113,5 +113,5 @@
         document.body.dispatchEvent(new CustomEvent('o.LoadingIndicatorToggle.' + loaderId));
       }
     </script>
-<script type="text/javascript" src="/loadingIndicator/demo.loadingIndicator.js"></script><script type="text/javascript" src="/loadingIndicator/dev.loadingIndicator.js"></script><script type="text/javascript" src="/loadingIndicator/dist.loadingIndicator.js"></script></body>
+<script type="text/javascript" src="/loading-indicator/demo.loadingIndicator.js"></script><script type="text/javascript" src="/loading-indicator/dev.loadingIndicator.js"></script><script type="text/javascript" src="/loading-indicator/dist.loadingIndicator.js"></script><script type="text/javascript" src="/loading-indicator/fonts.loadingIndicator.js"></script></body>
 </html>
