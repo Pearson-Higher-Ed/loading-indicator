@@ -6,6 +6,12 @@ Install and save in your package.json:
 
     npm install @pearson-components/LoadingIndicator --save
 
+Additionally, since this package is available on NPM, it can also be included via a script tag pointing to unpkg.com
+
+```html
+<script type="text/javascript" src="https://unpkg.com/@pearson-components/loading-indicator@1.0.10/build/dist.loadingIndicator.js"></script>
+```
+
 ## External Dependencies
 
 React and ReactDOM (v0.14 or v15) are external dependencies required to use this component. They are npm-installable or
