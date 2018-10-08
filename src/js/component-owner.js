@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import '../scss/component-specific.scss';
-import { LoadingSpinner } from 'pearson-compounds';
+import { LoadingSpinner } from '@pearson-components/elements-sdk/build/dist.elements-sdk';
 import ally from 'ally.js';
 
 
