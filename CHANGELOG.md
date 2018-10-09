@@ -1,10 +1,37 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/Pearson-Higher-Ed/loading-indicator/compare/v1.0.10...v1.1.0) (2018-10-09)
+
+
+### Bug Fixes
+
+* clear warnings for unit tests ([6997008](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/6997008))
+* update package-lock.json to resolve security concerns. ([acaca64](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/acaca64))
+
+
+### Features
+
+* Bring in new npm-scripts & setup gh-pages ([e11e9cb](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/e11e9cb))
+* Bring in new npm-scripts & setup gh-pages ([a9c6d2b](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/a9c6d2b))
+
+
+
 <a name="1.0.10"></a>
-## [1.0.10](https://github.com/Pearson-Higher-Ed/loading-indicator/compare/v1.0.7...v1.0.10) (2017-11-13)
+## [1.0.10](https://github.com/Pearson-Higher-Ed/loading-indicator/compare/v1.0.9...v1.0.10) (2017-11-13)
 
 
 ### Features
 
 * Integrate Sonar ([1479ff1](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/1479ff1))
+
+
+
+<a name="1.0.9"></a>
+## [1.0.9](https://github.com/Pearson-Higher-Ed/loading-indicator/compare/v1.0.8...v1.0.9) (2017-09-29)
+
+
+
+<a name="1.0.8"></a>
+## [1.0.8](https://github.com/Pearson-Higher-Ed/loading-indicator/compare/v1.0.7...v1.0.8) (2017-09-29)
 
 
 
@@ -109,7 +136,7 @@
 * update npm-scripts version ([adc0cbf](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/adc0cbf))
 * update the html with proptypes script ([a97decd](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/a97decd))
 * upgrade webpack ([5098442](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/5098442))
-* Use verify npm script to ensure package name has [@pearson](https://github.com/pearson)-components scope. ([772586f](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/772586f))
+* Use verify npm script to ensure package name has [@pearson-components](https://github.com/pearson-components) scope. ([772586f](https://github.com/Pearson-Higher-Ed/loading-indicator/commit/772586f))
 
 
 ### Features
